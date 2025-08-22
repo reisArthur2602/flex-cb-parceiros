@@ -7,9 +7,8 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "./logo";
 
 const NAVIGATION_MENU_LINKS = [
-  { label: "Features", link: "#features" },
-  { label: "Testimonials", link: "#testimonials" },
-  { label: "Contact", link: "#contact" },
+  { label: "Catálogo de parceiros", link: "#partner" },
+  { label: "Contatos", link: "#contacts" },
 ];
 
 export const NavigationMenu = () => {
@@ -17,7 +16,7 @@ export const NavigationMenu = () => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/80 backdrop-blur-md">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
+      <div className="container mx-auto flex h-16 items-center justify-between p-6">
         <Logo />
 
         <nav className="hidden md:flex md:gap-6 lg:gap-10">
@@ -25,14 +24,14 @@ export const NavigationMenu = () => {
             <a
               key={link.link}
               href={link.link}
-              className="text-sm font-medium text-gray-600 transition-colors hover:text-gray-900 capitalize"
+              className="text-sm font-medium  transition-colors capitalize"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        <Button>Quero aproveitar agora</Button>
+        <Button className="hidden md:block">Quero aproveitar agora</Button>
 
         <button
           className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 md:hidden"

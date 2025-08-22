@@ -1,18 +1,16 @@
-import { CtaSection } from "./components/cta-section";
-import { Footer } from "./components/footer";
+import {Footer} from "./components/footer";
 import { HeroSection } from "./components/hero-section";
 import { NavigationMenu } from "./components/navigation-menu";
-import { PartnershipsSection } from "./components/partnerships-section";
-import { TestimonialsSection } from "./components/testimonials-section";
+import { PartnerCatalog } from "./components/partner-catalog";
 
 const App = () => {
   return (
-    <main className="min-h-screen ">
+    <main className="min-h-screen bg-white">
       <NavigationMenu />
-      <HeroSection />
-      <TestimonialsSection />
-      <PartnershipsSection />
-      <CtaSection />
+      <div className="container mx-auto p-4">
+        <HeroSection />
+        <PartnerCatalog />
+      </div>
       <Footer />
     </main>
   );

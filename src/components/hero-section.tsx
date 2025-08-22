@@ -1,110 +1,80 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { ArrowUpRight } from "lucide-react";
+import { ImageGrid } from "./images-grid";
+import { Badge } from "./ui/badge";
+import { Button } from "./ui/button";
 import { motion } from "framer-motion";
 
-const hero = {
-  badge: "💳 Clube de Descontos Exclusivos",
-  heading: "Lorem ipsum dolor sit amet. Qui provident ",
-  description:
-    "Lorem ipsum dolor sit amet. Qui provident beatae aut odit repellendus rem officiis dolorum qui quidem nihil et voluptatum animi ex amet maiores et enim nesciunt. Est eaque nostrum ea ",
-  buttons: {
-    primary: {
-      text: "Call Action",
-      url: "#parceiros",
-    },
-    secondary: {
-      text: "Call Action",
-      url: "#assine",
-    },
-  },
-  image: {
-    src: "/hero-banner.jpg",
-    alt: "Imagem de benefícios do Flex Club mostrando restaurantes, academias e serviços de beleza",
-  },
-};
+const images = [
+  "/hero-banner.jpg",
+  "/hero-banner.jpg",
+  "/hero-banner.jpg",
+  "/hero-banner.jpg",
+  "/hero-banner.jpg",
+];
 
 export const HeroSection = () => {
   return (
-    <section className="section-padding">
+    <section className="md:py-40 grid grid-cols-1 gap-12 md:grid-cols-2 items-center">
+      {/* Texto e Botões */}
       <motion.div
-        className="container mx-auto"
-        initial="hidden"
-        animate="show"
-        variants={{
-          hidden: { opacity: 0 },
-          show: { opacity: 1, transition: { staggerChildren: 0.2 } },
-        }}
+        className="space-y-8 text-center md:text-start"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <div className="grid items-center gap-8 lg:grid-cols-2">
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-            {hero.badge && (
-              <motion.div
-                variants={{
-                  hidden: { y: -10, opacity: 0 },
-                  show: { y: 0, opacity: 1 },
-                }}
-              >
-                <Badge variant="outline">
-                  {hero.badge}
-                  <ArrowUpRight className="ml-2 size-4" />
-                </Badge>
-              </motion.div>
-            )}
+        <Badge variant="outline" asChild>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            #🟧VemSerFlexVocêTmb
+            <ArrowUpRight className="ml-2 size-4" />
+          </motion.div>
+        </Badge>
 
-            <motion.h1
-              className="my-6 text-pretty"
-              variants={{
-                hidden: { y: 20, opacity: 0 },
-                show: { y: 0, opacity: 1 },
-              }}
-            >
-              {hero.heading}
-            </motion.h1>
-
-            <motion.p
-              className="mb-8 max-w-xl"
-              variants={{
-                hidden: { y: 20, opacity: 0 },
-                show: { y: 0, opacity: 1 },
-              }}
-            >
-              {hero.description}
-            </motion.p>
-
-            <motion.div
-              className="flex w-full flex-col justify-center gap-2 sm:flex-row lg:justify-start"
-              variants={{ hidden: { opacity: 0 }, show: { opacity: 1 } }}
-            >
-              {hero.buttons.primary && (
-                <Button asChild className="w-full sm:w-auto">
-                  <a href={hero.buttons.primary.url}>
-                    {hero.buttons.primary.text}
-                  </a>
-                </Button>
-              )}
-              {hero.buttons.secondary && (
-                <Button asChild variant="outline" className="w-full sm:w-auto">
-                  <a href={hero.buttons.secondary.url}>
-                    {hero.buttons.secondary.text}
-                    <ArrowRight className="size-4" />
-                  </a>
-                </Button>
-              )}
-            </motion.div>
-          </div>
-
-          {/* Imagem */}
-          <motion.img
-            src={hero.image.src}
-            alt={hero.image.alt}
-            className="max-h-96 w-full rounded-md object-cover"
-            variants={{
-              hidden: { x: 50, opacity: 0 },
-              show: { x: 0, opacity: 1 },
-            }}
-          />
+        <div className="space-y-4">
+          <motion.h1
+            className="font-bold md:text-6xl text-3xl leading-tight text-pretty"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+          >
+            Clube Flex: descontos que cuidam de você e da sua família
+          </motion.h1>
+          <motion.p
+            className="font-medium leading-tight text-lg lg:text-xl "
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+          >
+            Desde 2010 proporcionando qualidade de Vida para você e para sua
+            família
+          </motion.p>
         </div>
+
+        <motion.div
+          className="flex items-center gap-2 flex-col md:flex-row"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          <Button className="w-full md:w-fit" size="lg">
+            Quero ser Flex
+          </Button>
+          <Button variant="outline" className="w-full md:w-fit" size="lg">
+            Conheça nossos parceiros
+          </Button>
+        </motion.div>
+      </motion.div>
+
+      {/* Grid de Imagens */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.6, duration: 0.8 }}
+      >
+        <ImageGrid images={images} />
       </motion.div>
     </section>
   );
